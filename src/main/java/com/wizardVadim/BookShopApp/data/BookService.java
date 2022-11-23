@@ -14,37 +14,24 @@ import java.util.List;
 public class BookService {
 
     private JdbcTemplate jdbcTemplate;
+    private AuthorService authorService;
 
     @Autowired
-    public BookService(JdbcTemplate jdbcTemplate) {
+    public BookService(JdbcTemplate jdbcTemplate, AuthorService authorService) {
         this.jdbcTemplate = jdbcTemplate;
+        this.authorService = authorService;
     }
 
     public List<Book> getBooksData() {
         List<Book> books = jdbcTemplate.query("SELECT * FROM books", (ResultSet rs, int rowNum) -> {
                 Book book = new Book();
                 book.setId(rs.getInt("id"));
-                book.setAuthor(getAuthor(book.getId()).getName());
+                book.setAuthor(authorService.getAuthor(book.getId()).getFullName());
                 book.setTitle(rs.getString("title"));
                 book.setPriceOld(rs.getString("price_old"));
                 book.setPrice(rs.getString("price"));
                 return book;
         });
         return new ArrayList<>(books);
-    }
-
-    public Author getAuthor(Integer authorId) {
-        return jdbcTemplate.query("SELECT * FROM authors WHERE id=?", new Object[]{authorId},
-                new BeanPropertyRowMapper<>(Author.class)).stream().findAny().orElse(new Author("Неизвестен"));
-    }
-
-    public List<Author> getAuthorsData() {
-        List<Author> authors = jdbcTemplate.query("SELECT * FROM authors", (ResultSet rs, int rowNum) -> {
-           Author author = new Author();
-           author.setName(rs.getString("name"));
-           author.setId(rs.getInt("id"));
-           return author;
-        });
-        return new ArrayList<>(authors);
     }
 }

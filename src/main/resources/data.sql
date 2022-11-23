@@ -998,12 +998,3 @@ insert into books (id, price, price_old, title, author_id) values (997, 580, 131
 insert into books (id, price, price_old, title, author_id) values (998, 2154, 3898, 'Sonsing', 18);
 insert into books (id, price, price_old, title, author_id) values (999, 2423, 3953, 'Lotstring', 90);
 insert into books (id, price, price_old, title, author_id) values (1000, 1100, 2905, 'Aerified', 41);
-
-CREATE TABLE authors AS
-    SELECT DISTINCT author_id
-    FROM books;
-
-ALTER TABLE authors RENAME COLUMN author_id TO id;
-ALTER TABLE authors ADD name VARCHAR(250) NOT NULL DEFAULT 'Неизвестен';
-
-SELECT * FROM authors ORDER BY id ASC;

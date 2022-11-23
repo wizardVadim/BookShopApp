@@ -7,3 +7,9 @@ title VARCHAR(250) NOT NULL,
 price_old VARCHAR(250) DEFAULT NULL,
 price VARCHAR(250) DEFAULT NULL
 );
+
+create table authors (
+                         id INT,
+                         first_name VARCHAR(50),
+                         last_name VARCHAR(50)
+);
