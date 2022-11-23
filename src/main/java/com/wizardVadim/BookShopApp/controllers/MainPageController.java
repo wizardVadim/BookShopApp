@@ -25,7 +25,17 @@ public class MainPageController {
 
     @ModelAttribute("recommendedBooks")
     public List<Book> recommendedBooks() {
-        return this.bookService.getBooksData();
+        return this.bookService.getBooksForSection();
+    }
+
+    @ModelAttribute("popularBooks")
+    public List<Book> popularBooks() {
+        return this.bookService.getBooksForSection();
+    }
+
+    @ModelAttribute("recentBooks")
+    public List<Book> recentBooks() {
+        return this.bookService.getBooksForSection();
     }
 
     @GetMapping("/")
