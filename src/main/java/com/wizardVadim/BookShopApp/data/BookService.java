@@ -51,4 +51,14 @@ public class BookService {
         return booksForSection;
     }
 
+    public Book getBookById(Integer id) {
+        List<Book> bookData = getBooksData();
+        for (Book book : bookData) {
+            if (book.getId().equals(id)) {
+                return book;
+            }
+        }
+        return null;
+    }
+
 }
