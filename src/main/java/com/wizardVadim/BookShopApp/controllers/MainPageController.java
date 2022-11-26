@@ -39,8 +39,24 @@ public class MainPageController {
     }
 
     @GetMapping("/")
-    public String mainPage(Model model) {
+    public String getMainPage() {
         return "index";
     }
+
+    @GetMapping("/about")
+    public String getAboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/faq")
+    public String getFaqPage() {
+        return "faq";
+    }
+
+    @GetMapping("/contacts")
+    public String getContactsPage() {
+        return "contacts";
+    }
+
 
 }
