@@ -1,7 +1,7 @@
 package com.wizardVadim.BookShopApp.controllers;
 
-import com.wizardVadim.BookShopApp.data.Book;
-import com.wizardVadim.BookShopApp.data.BookService;
+import com.wizardVadim.BookShopApp.data.struct.book.Book;
+import com.wizardVadim.BookShopApp.data.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

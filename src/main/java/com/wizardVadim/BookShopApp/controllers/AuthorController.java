@@ -1,9 +1,8 @@
 package com.wizardVadim.BookShopApp.controllers;
 
-import com.wizardVadim.BookShopApp.data.Author;
-import com.wizardVadim.BookShopApp.data.AuthorService;
-import com.wizardVadim.BookShopApp.data.Book;
-import com.wizardVadim.BookShopApp.data.BookService;
+import com.wizardVadim.BookShopApp.data.struct.author.Author;
+import com.wizardVadim.BookShopApp.data.services.AuthorService;
+import com.wizardVadim.BookShopApp.data.services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +41,7 @@ public class AuthorController {
     @GetMapping("/slug")
     public String getAuthor(@RequestParam("id") Integer id, Model model) {
         model.addAttribute("author", authorService.getAuthor(id));
-        model.addAttribute("books", bookService.getBooksByAuthor(authorService.getAuthor(id)));
+        model.addAttribute("books", bookService.getBooksByAuthor(authorService.getAuthor(id).getId()));
         return "authors/slug";
     }
 }
