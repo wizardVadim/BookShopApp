@@ -46,7 +46,7 @@ public class BookService {
     }
 
     public List<Book> getBooksByAuthor(Integer id) {
-        return bookRepository.findByAuthorId(id);
+        return bookRepository.findBooksByAuthorId(id);
     }
 
 }

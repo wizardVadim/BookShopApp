@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    @Query("from Book WHERE author.id = ?1")
-    List<Book> findByAuthorId(Integer id);
+    @Query(value = "SELECT * FROM books JOIN book2author ON books.id = book2author.book_id JOIN authors ON book2author.author_id = authors.id WHERE authors.id = ?1", nativeQuery = true)
+    List<Book> findBooksByAuthorId(Integer id);
 }

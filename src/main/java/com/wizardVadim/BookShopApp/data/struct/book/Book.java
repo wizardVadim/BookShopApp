@@ -12,12 +12,13 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(table = "book2author", referencedColumnName = "book_id")
     private int id;
 
     @Column(name = "pub_date", columnDefinition = "DATE NOT NULL")
     private Date pubDate;
 
-    @Column(name = "is_bestseller", columnDefinition = "TINYINT NOT NULL")
+    @Column(name = "is_bestseller", columnDefinition = "INT NOT NULL")
     private byte isBestseller;
 
     @Column(columnDefinition = "VARCHAR(255) NOT NULL")
@@ -35,7 +36,7 @@ public class Book {
     @Column(columnDefinition = "INT NOT NULL")
     private int price;
 
-    @Column(columnDefinition = "TINYINT NOT NULL DEFAULT 0")
+    @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
     private byte discount;
 
     public int getId() {

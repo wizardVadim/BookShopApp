@@ -12,6 +12,7 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(table = "book2author", referencedColumnName = "author_id")
     private Integer id;
 
     @Column(columnDefinition = "VARCHAR(255)")
